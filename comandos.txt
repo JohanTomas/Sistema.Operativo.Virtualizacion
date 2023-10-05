@@ -1,0 +1,21 @@
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install mysql-server -y
+sudo su
+-- passwd root
+-- (malasquez)
+-- (malasquez)
+exit
+sudo mysql_secure_installation
+N - Y - N - Y - Y
+sudo mysql -u root
+exit
+sudo mysql -u root -p
+-- (malasquez)
+create user 'malasquez'@'localhost' IDENTIFIED WITH mysql_native_password BY 'malasquez';
+GRANT ALL PRIVILEGES ON * . * TO 'malasquez'@'localhost';
+flush privileges;
+exit
+
+link del repositorio (privado):
+https://github.com/JohanTomas/Sistema-Operativo-Virtualizacion/tree/Base_Datos

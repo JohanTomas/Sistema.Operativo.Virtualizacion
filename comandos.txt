@@ -7,7 +7,11 @@ sudo su
 -- (malasquez)
 exit
 sudo mysql_secure_installation
-N - Y - N - Y - Y
+N
+Y
+N
+Y
+Y
 sudo mysql -u root
 exit
 sudo mysql -u root -p

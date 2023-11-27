@@ -74,15 +74,18 @@ app.post("/procesar-formulario", async (req, res) => {
   /**
    * Desestructuración de los datos del body
    */
-  const { nombre_alumno, email_alumno, curso_alumno } = req.body;
+  const { nombre_alumno, email_alumno, curso_alumno, dni_alumno, celular_alumno, direccion_alumno } = req.body;
   try {
     // Realizar la inserción en la base de datos
     const query =
-      "INSERT INTO estudiantes (nombre_alumno, email_alumno, curso_alumno, created_at) VALUES (?, ?, ?, ?)";
+      "INSERT INTO estudiantes (nombre_alumno, email_alumno, curso_alumno, dni_alumno, celular_alumno, direccion_alumno, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)";
     await connection.execute(query, [
       nombre_alumno,
       email_alumno,
       curso_alumno,
+      dni_alumno,
+      celular_alumno,
+      direccion_alumno,
       new Date(),
     ]);
 
@@ -100,29 +103,28 @@ app.post("/procesar-formulario", async (req, res) => {
 /**
  * Insert segunda forma
  */
-app.post("/procesar-formulario2", (req, res) => {
+app.post("/procesar-formulario2", async (req, res) => {
   console.log(req.body);
-  const { nombre_alumno, email_alumno, curso_alumno } = req.body;
+  const { nombre_alumno, email_alumno, curso_alumno, dni_alumno, celular_alumno, direccion_alumno } = req.body;
   try {
     const query =
-      "INSERT INTO estudiantes (nombre_alumno, email_alumno, curso_alumno, created_at) VALUES (?, ?, ?,?)";
-    connection.query(
-      query,
-      [nombre_alumno, email_alumno, curso_alumno, new Date()],
-      (error, result) => {
-        if (error) {
-          console.error("Error al insertar en la base de datos: ", error);
-          res.send("Error al procesar el formulario");
-          return;
-        }
+      "INSERT INTO estudiantes (nombre_alumno, email_alumno, curso_alumno, dni_alumno, celular_alumno, direccion_alumno, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        if (result && result.affectedRows > 0) {
-          res.send("¡Formulario procesado correctamente!");
-        } else {
-          res.send("Error al procesar el formulario");
-        }
-      }
-    );
+    const [result] = await connection.execute(query, [
+      nombre_alumno,
+      email_alumno,
+      curso_alumno,
+      dni_alumno,
+      celular_alumno,
+      direccion_alumno,
+      new Date(),
+    ]);
+
+    if (result && result.affectedRows > 0) {
+      res.send("¡Formulario procesado correctamente!");
+    } else {
+      res.send("Error al procesar el formulario");
+    }
   } catch (error) {
     console.error("Error al insertar en la base de datos: ", error);
     res.send("Error al procesar el formulario");

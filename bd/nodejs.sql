@@ -32,6 +32,9 @@ CREATE TABLE `estudiantes` (
   `nombre_alumno` varchar(100) DEFAULT NULL,
   `email_alumno` varchar(100) DEFAULT NULL,
   `curso_alumno` varchar(100) DEFAULT NULL,
+  `dni_alumno` char(8) DEFAULT NULL,
+  `celular_alumno` char(9) DEFAULT NULL,
+  `direccion_alumno` varchar(250) DEFAULT NULL,
   `created_at` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -39,8 +42,9 @@ CREATE TABLE `estudiantes` (
 -- Volcado de datos para la tabla `estudiantes`
 --
 
-INSERT INTO `estudiantes` (`id_estudiante`, `nombre_alumno`, `email_alumno`, `curso_alumno`, `created_at`) VALUES
-(30, 'Luis11323232', '11232311@gmail.com', 'NodeJS', '2023-05-26');
+INSERT INTO `estudiantes` (`id_estudiante`, `nombre_alumno`, `email_alumno`, `curso_alumno`, `dni_alumno`, `celular_alumno`, `direccion_alumno`, `created_at`) VALUES
+(30, 'Luis11323232', '11232311@gmail.com', 'NodeJS', '75366255', '903060835', 'lima', '2023-05-26');
+
 
 --
 -- Índices para tablas volcadas

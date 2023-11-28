@@ -132,7 +132,7 @@ app.post("/procesar-formulario2", async (req, res) => {
 });
 
 // Iniciar el servidor con Express
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
+  console.log(`Servidor escuchando en http://44.216.164.82:${PORT}`);
 });
